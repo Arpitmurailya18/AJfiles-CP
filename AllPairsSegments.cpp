@@ -46,7 +46,7 @@ int main() {
             mp[ok]+=x[i]-x[i-1]-1;
         }
 
-        ll seg=(n-i)*i+(n-i-1);git 
+        ll seg=(n-i)*i+(n-i-1);
         mp[seg]++;
       }
       for(ll i=0;i<q;i++){
