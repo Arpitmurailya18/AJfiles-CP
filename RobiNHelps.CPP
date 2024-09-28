@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long double lld;
+typedef unsigned long long ull;
+typedef long long ll;
+typedef int in;
+typedef char ch;
+typedef float fl;
+typedef double dou;
+typedef string ss;
+
+#define ub upper_bound
+#define lb lower_bound
+#define AJ(i,a,b) for(int i=a;i<b;i++)
+#define test int t; cin>>t; while(t--)
+ll fastprime(ll a){ if (a != 2 && a % 2 == 0 || a < 2) return 0;  for(int i = 3; i * i <= a; i += 2) if(a % i == 0) return 0; return 1;}
+constexpr int MOD=1000000007;
+
+#ifndef ONLINE_JUDGE
+#include "karpit.h"
+#define deb(x...) cerr << "[" << #x << "] = ["; _print(x)
+#else
+#define deb(x...)
+#endif
+
+int main() {
+    ios_base::sync_with_stdio(false);cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
+#endif
+
+    test {
+    ll n,k;
+    cin>>n>>k;
+    vector<ll> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+     deb(k);
+    ll c=0,ok=0;
+    for(int i=0;i<n;i++){
+        deb(a[i]);
+        if(a[i]>=k){
+          
+            c+=a[i];
+                 
+        }else{
+            if(c>0&&a[i]==0){  c--;
+                ok++;
+            }
+        }
+        
+    }
+
+    cout<<ok<<"\n";
+    }
+    return 0;
+}

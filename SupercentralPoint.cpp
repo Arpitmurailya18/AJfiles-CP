@@ -50,20 +50,61 @@ int main(){
         freopen("error.txt", "w", stderr); 
         freopen("output.txt", "w", stdout);
 #endif
-    ll n;
+    ll n,c=0,d=0,e=0,f=0,ans=0;
     cin>>n;
-    vector<ll> a(n),b(n),c;
+    vector<ll> a(n),b(n),k,l;
     AJ(i,0,n){
         cin>>a[i]>>b[i];
-        c.push_back(a[i]+b[i]);
     }
     AJ(i,0,n){
       AJ(j,0,n){
         if(i!=j){
-          if(c[i]<c[j]){
-            if(a[i]==a[j])
+          if(a[i]==a[j]){
+            debug(a[j]);
+            if(b[i]<b[j]) c++;
+            if(b[i]>b[j]) d++;
+          }
+          if(b[i]==b[j]){
+            debug(a[j]);
+            if(a[i]<a[j]) e++;
+            if(a[i]>a[j]) f++;
           }
         }
       }
+      if(c>0&&d>0&&e>0&&f>0) ans++;
+      c=d=e=f=0;
+      // debug(c);
+      // debug(d);
+      // if(c!=0&&d!=0){
+      //   k.push_back(c+d);
+      // }else k.push_back(0);
+      // c=0;
+      // d=0;
     }
+    // c=0;
+    // d=0;
+    // AJ(i,0,n){
+    //   AJ(j,0,n){
+    //     if(i!=j){
+    //       if(b[i]==b[j]){
+    //         debug(b[j]);
+    //         if(a[i]<a[j]) c++;
+    //         if(a[i]>a[j]) d++;
+    //       }
+    //     }
+    //   }
+    //   debug(c);
+    //   debug(d);
+    //   if(c!=0&&d!=0){
+    //     l.push_back(c+d);
+    //   }else l.push_back(0);
+    //   c=0;
+    //   d=0;
+    // }
+    // debug(k);
+    // debug(l);
+    // AJ(i,0,k.size()){
+    //   if(k[i]+l[i]>=4) ans++;
+    // }
+    cout<<ans<<endl;
 }
