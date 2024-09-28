@@ -33,26 +33,7 @@ int main() {
 #endif
 
     test {
-      ll n,q;
-      cin>>n>>q;
-      vector<ll> x(n),k(q);
-      for(ll i=0;i<n;i++){
-        cin>>x[i];
-      }
-      map<ll,ll> mp;
-      for(ll i=0;i<n;i++){
-        if(i>0){
-            ll ok=(n-i)*i;
-            mp[ok]+=x[i]-x[i-1]-1;
-        }
-
-        ll seg=(n-i)*i+(n-i-1);git 
-        mp[seg]++;
-      }
-      for(ll i=0;i<q;i++){
-        cin>>k[i];
-        cout<<mp[k[i]]<<" ";
-      }cout<<"\n";
+      cout<<"or sab badhiya"<<"\n";
     }
     return 0;
 }
