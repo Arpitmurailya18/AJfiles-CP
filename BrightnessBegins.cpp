@@ -23,15 +23,6 @@ constexpr int MOD=1000000007;
 #define deb(x...)
 #endif
 
-long long n2(long long N)
-{
-    long long a=log2(N);
- 
-    if (pow(2, a) == N)
-        return a;
- 
-    return a+1;
-}
 
 int main() {
     ios_base::sync_with_stdio(false);cin.tie(0);
@@ -45,15 +36,26 @@ int main() {
     test {
        ll k;
        cin>>k;
-       ll ans=n2(k);
-       deb(ans);
-       if(k==1) cout<<2<<"\n";
-       else cout<<ans+k<<"\n";
-    //    if(k==1) cout<<2<<"\n";
-    //    else{
-    //     if(k%2==1) cout<<ll(k+log2(k+1))<<"\n";
-    //     else cout<<ll(k+log2(k))<<"\n";
-    //    }
+       ll s=1,e=1e9;
+       bool ok=true;
+       while(s<=e){
+        ll mid=(s+e)/2;
+        if(mid*mid-mid>k){
+            e=mid-1;
+        }else if(mid*mid-mid<k){
+            s=mid+1;
+        }else{
+            ok=false;
+            cout<<mid*mid-1<<"\n";
+            break;
+        }
+       }
+       deb(s);
+       if(ok){  
+        //   cout<<ok<<"\n";
+          cout<<s*s+k-(s*s-s)-1<<"\n";
+       }
+
     }
     return 0;
 }
