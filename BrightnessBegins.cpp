@@ -52,7 +52,6 @@ int main() {
        }
        deb(s);
        if(ok){  
-        //   cout<<ok<<"\n";
           cout<<s*s+k-(s*s-s)-1<<"\n";
        }
 
