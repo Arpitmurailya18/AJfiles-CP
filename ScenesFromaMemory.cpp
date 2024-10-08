@@ -57,7 +57,8 @@ int main() {
             else ans=v[i]*10+v[j];
             if(fastprime(ans)==0){
                maxi=min(maxi,ans);
-               g=i,h=j;
+               break;
+            //    g=i,h=j;
             }
          }
        }
