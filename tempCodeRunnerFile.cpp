@@ -1,2 +1,2 @@
-      deb(preA);
-      deb(preB);
+      deb(pref);
+      deb(suff);

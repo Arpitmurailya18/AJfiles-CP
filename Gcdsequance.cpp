@@ -12,7 +12,7 @@ typedef string ss;
 #define ub upper_bound
 #define lb lower_bound
 #define AJ(i,a,b) for(int i=a;i<b;i++)
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+#define fastio ios_base::sync_with_stdio(falsecls);cin.tie(0);
 #define test int t; cin>>t; while(t--)
 constexpr int MOD=1000000007;
 
