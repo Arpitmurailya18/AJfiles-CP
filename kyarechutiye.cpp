@@ -47,10 +47,12 @@ int main() {
     test {
       ll n;
       cin>>n;
+      vector<ll> a(n);
       for(int i=0;i<n;i++){
-        if(i==0) cout<<1;
-        else cout<<0;
-      }cout<<"\n";
+        cin>>a[i];
+      }
+      
+
     }
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 typedef long double lld;
@@ -45,26 +46,29 @@ int main() {
 #endif
 
     test {
-      ll n,m,k;
-      cin>>n>>m>>k;
-      vector<ll> a(n),b(m);
-      for(int i=0;i<n;i++){
+      ll n;
+      cin>>n;
+      vector<ll> a(n+1);
+      for(int i=0;i<=n;i++){
         cin>>a[i];
       }
-      for(int i=0;i<m;i++){
-        cin>>b[i];
+      ll an=a[n];
+      sort(a.rbegin(),a.rend()-1);
+      deb(a);
+      for(int i=n-1;i>=0;i--){
+         if(a[i]<=2*a[n]){
+           swap(a[i],a[n]);
+         }
+        //  k=an;
+         deb(a);
+      }
+      ll sum=0;
+      for(int i=0;i<n;i++){
+        sum+=a[i];
       }
 
-      if(k%2==0){
-        cout<<accumulate(a.begin(),a.end(),0LL)<<"\n";
-      }else{
-        ll maxigel=*max_element(b.begin(),b.end());
-        ll minijel=*min_element(a.begin(),a.end());
-        deb(maxigel,minijel);
-        if(maxigel>minijel) cout<<accumulate(a.begin(),a.end(),0LL)-minijel+maxigel<<"\n";
-        else cout<<accumulate(a.begin(),a.end(),0LL)<<"\n";
-      }
-      
+      cout<<sum<<"\n";
+
     }
     return 0;
 }
