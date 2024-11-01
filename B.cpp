@@ -45,46 +45,37 @@ int main() {
 #endif
 
     test {
-      ll n;
-      cin>>n;
-      vector<ll> a(n),b(n),c(n),preok,prif,presum(n+1),preoksum(n+1);
-      presum[0]=0;
-      
-      for(int i=0;i<n;i++){
-        cin>>a[i];
-        c[i]=a[i];
-        if(i>0)b[i]=max(a[i],a[i-1]);
-        else b[i]=a[i];
-        if(a[i]%2==0){
-          ll c=0;
-          while(a[i]%2==0){
-             c++;
-             a[i]/=2;
-             if(a[i]&1) break;
+      ll n,k;
+      cin>>n>>k;
+      ll ok=(n+2-1)/2;
+      if(n==1){
+        cout<<1<<"\n";
+        cout<<1<<"\n";
+      }else{
+        if(k==1||k==n){
+          cout<<-1<<"\n";
+        }else{
+          if(k==ok){
+            cout<<n<<"\n";
+            for(int i=1;i<=n;i++){
+              cout<<i<<" ";
+            }cout<<"\n";
+          }else{
+            cout<<n-abs(ok-k)*2<<"\n";
+            if(k<ok){
+              for(int i=1;i<=2*k-1;i++){
+                cout<<i<<" ";
+              }cout<<"\n";
+              // cout<<k+2<<"\n";
+            }else{
+              cout<<1<<" ";
+              for(int i=k*2-n+1;i<=n;i++){
+                cout<<i<<" ";
+              }cout<<"\n";
+            }
           }
-          prif.push_back(c);
-        }else prif.push_back(0);
-        presum[i+1]=presum[i]+prif[i];
-        preok.push_back(a[i]);
-      }
-      preoksum[0]=0;
-      for(int i=0;i<n;i++){
-       preoksum[i+1]=preoksum[i]+preok[i];
-      }
-      deb(prif);
-      deb(presum);
-      deb(preok);
-      deb(preoksum);
-      deb(b);
-      for(int i=0;i<n;i++){
-        ll ha=binpow(2,presum[i],MOD);
-        deb(ha,b[i],preoksum[i]);
-        if(b[i]!=b[i-1]&&i>0)cout<<((ha%MOD*b[i]%MOD)%MOD+(preoksum[i]%MOD))%MOD<<" ";
-        else{
-          if(i>0) cout<<((ha*b[i])%MOD+(preoksum[i-1]+c[i])%MOD)%MOD<<" ";
-          else cout<<c[i]<<" ";
         }
-      }cout<<"\n";
+      }
 
     }
     return 0;

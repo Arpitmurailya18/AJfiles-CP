@@ -47,30 +47,18 @@ int main() {
     test {
       ll n;
       cin>>n;
-    //   map><int,int> mp;
-      vector<int> l(n),r(n);
-      int mal=-1e9,mar=-1e9;
-      for(int i=0;i<n;i++){
-        // int l,r;
-        cin>>l[i]>>r[i];
-        mal=max(mal,l[i]);
-        mar=max(mar,r[i]);
-        // mp[l]=r;
+      vector<ll> a(n*2);
+      ll oc=0,zc=0;
+      for(int i=0;i<n*2;i++){
+        cin>>a[i];
+        if(a[i]==1) oc++;
+        else zc++;
       }
-      sort(l.rbegin(),l.rend());
-      sort(r.rbegin(),r.rend());
-
-      int ans=0;
-      for(int i=0;i<n-1;i++){
-        ans+=l[i]-l[i+1];
-        ans+=r[i]-r[i+1];
-      }
-
-      cout<<ans+mal+mar+l[n-1]+r[n-1]<<"\n";
-
-
+      deb(oc,zc);
+      int k=oc/2+zc/2;
+      cout<<n-k<<" "<<min(oc,zc)<<"\n";
       
-
+     
     }
     return 0;
 }
