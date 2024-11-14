@@ -42,55 +42,30 @@ int main() {
     test {
       ll n;
       cin>>n;
-      vector<ll> a(n),v(n);
-      map<ll,ll> mp;
-      bool ans=false;
+      vector<ll> a(n);
       for(int i=0;i<n;i++){
         cin>>a[i];
-        if(i>0&&a[i]==a[i-1]){
-           ans=true;
+        if(i&1) a[i]=-a[i];
+      }
+      deb(a);
+      map<ll,ll> mp;
+      bool ok=true;
+      ll sum=0;
+      mp[sum]=1;
+      for(int i=0;i<n;i++){
+        sum+=a[i];
+        if(mp.find(sum)!=mp.end()){
+            cout<<"YES"<<"\n";
+            ok=false;
+            break;
         }
-        if(i==0) v[i]=a[i];
-        else if(i==1) v[i]=a[i];
-        else{
-           v[i]=a[i]+v[i-2];
-        }
+        mp[sum]=1;
+        deb(mp);
       }
 
-      deb(v);
-      if(ans){
-        cout<<"YES"<<"\n";
-      }
-      else{
-        ll sum=v[0];
-        mp[sum]++;
-        bool ok=false;
-        for(int i=1;i<n;i++){
-          sum+=v[i];
-          mp[sum]++;
-          if(v[i]==v[i-1]){
-              cout<<"YES"<<"\n";
-              ok=true;
-              break;
-          }else {
-              ll ha=mp[abs(v[i-1]-v[i])];
-              deb(abs(v[i-1]-v[i]),ha);
-              if(ha>0&&i%2==0){
-                  cout<<"YES"<<"\n";
-                  ok=true;
-                  break;
-              }else{
-                  mp[v[i]-v[i-1]]--;
-              }
-          }
-          deb(mp);
-        }
-  
-        if(ok==false) cout<<"NO"<<"\n";
-
-      }
-
+      if(ok) cout<<"NO"<<"\n";
       
+
     }
     return 0;
 }
